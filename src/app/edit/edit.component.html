@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col-lg-11">
+    <h2 mat-dialog-title *ngIf="data; else fail">Edit User</h2>
+    <ng-template #fail>
+      <h2 mat-dialog-title>Create User</h2>
+    </ng-template>
+  </div>
+  <div class="col-lg-1">
+    <button
+      mat-button
+      class="close-icon pull-right"
+      mat-dialog-close
+      style="background-color: white"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+<hr />
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="form-group">
+        <label>First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="fname"
+          required
+        />
+      </div>
+      <br />
+      <div class="form-group">
+        <label>Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="lname"
+          required
+        />
+      </div>
+      <br />
+      <div class="form-group">
+        <label>E-mail</label>
+        <input
+          type="email"
+          class="form-control"
+          formControlName="email"
+          required
+        />
+      </div>
+      <br />
+      <div class="form-group">
+        <label>Mobile</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="mobile"
+          required
+        />
+      </div>
+      <br />
+      <div class="form-group">
+        <label>Password</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="password"
+          required
+        />
+      </div>
+      <br />
+      <button
+        mat-button
+        type="submit"
+        style="background-color: #242437; color: white"
+      >
+        Submit
+      </button>
+    </div>
+    <div class="col-lg-6"></div>
+  </div>
+</form>

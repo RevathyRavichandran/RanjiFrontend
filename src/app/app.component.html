@@ -1,0 +1,56 @@
+<div class="row set-margin">
+  <div class="col-lg-10"></div>
+  <div class="col-lg-2">
+    <button
+      mat-button
+      mat-dialog-close
+      style="background-color: #242437; color: white"
+      (click)="createMethod()"
+    >
+      Create User
+    </button>
+  </div>
+</div>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="sno">
+      <th mat-header-cell *matHeaderCellDef>S.No</th>
+      <td mat-cell *matCellDef="let element">{{ element.sno }}</td>
+    </ng-container>
+    <ng-container matColumnDef="fname">
+      <th mat-header-cell *matHeaderCellDef>First Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.fname }}</td>
+    </ng-container>
+    <ng-container matColumnDef="lname">
+      <th mat-header-cell *matHeaderCellDef>Last Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.lname }}</td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Mail ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+    <ng-container matColumnDef="mobile">
+      <th mat-header-cell *matHeaderCellDef>Mobile</th>
+      <td mat-cell *matCellDef="let element">{{ element.mobile }}</td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon
+          style="margin-right: 1rem"
+          (click)="editMethod(element['_id'])"
+          >edit</mat-icon
+        >
+        <mat-icon
+          style="margin-right: 1rem"
+          (click)="viewMethod(element['_id'])"
+          >visibility</mat-icon
+        >
+        <mat-icon (click)="deleteMethod(element['_id'])">delete</mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
