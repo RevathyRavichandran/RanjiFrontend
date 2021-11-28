@@ -28,6 +28,12 @@
           formControlName="fname"
           required
         />
+        <div
+          *ngIf="fname.invalid && (fname.dirty || fname.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="fname.errors.required">First Name is required.</div>
+        </div>
       </div>
       <br />
       <div class="form-group">
@@ -38,6 +44,12 @@
           formControlName="lname"
           required
         />
+        <div
+          *ngIf="lname.invalid && (lname.dirty || lname.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="lname.errors.required">Last Name is required.</div>
+        </div>
       </div>
       <br />
       <div class="form-group">
@@ -48,6 +60,13 @@
           formControlName="email"
           required
         />
+        <div
+          *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="email.errors.required">Email is required.</div>
+          <div *ngIf="email.errors.email">Invalid email.</div>
+        </div>
       </div>
       <br />
       <div class="form-group">
@@ -58,21 +77,34 @@
           formControlName="mobile"
           required
         />
+        <div
+          *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="mobile.errors.required">Mobile is required.</div>
+        </div>
       </div>
       <br />
       <div class="form-group">
         <label>Password</label>
         <input
-          type="text"
+          type="password"
           class="form-control"
           formControlName="password"
           required
         />
       </div>
+      <div
+        *ngIf="password.invalid && (password.dirty || password.touched)"
+        class="alert alert-danger"
+      >
+        <div *ngIf="password.errors.required">Password is required.</div>
+      </div>
       <br />
       <button
         mat-button
         type="submit"
+        [disabled]="userForm.invalid"
         style="background-color: #242437; color: white"
       >
         Submit

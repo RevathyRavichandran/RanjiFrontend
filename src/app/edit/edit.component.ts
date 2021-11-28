@@ -17,7 +17,7 @@ export class EditComponent implements OnInit {
   userForm = this.fb.group({
     fname: ["", Validators.required],
     lname: ["", Validators.required],
-    email: ["", Validators.required],
+    email: ["", Validators.compose([Validators.required, Validators.email])],
     mobile: ["", Validators.required],
     password: ["", Validators.required],
   });
@@ -43,6 +43,16 @@ export class EditComponent implements OnInit {
       );
     }
   }
+
+  get fname() { return this.userForm.get('fname'); }
+
+  get lname() { return this.userForm.get('lname'); }
+
+  get email() { return this.userForm.get('email'); }
+
+  get mobile() { return this.userForm.get('mobile'); }
+
+  get password() { return this.userForm.get('password'); }
 
   constructor(
     private fb: FormBuilder,
